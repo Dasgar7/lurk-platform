@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #151515;
+  --border: #222222;
+  --neon: #39ff6a;
+  --neon-dim: #1a8f3a;
+  --neon-glow: rgba(57, 255, 106, 0.35);
+  --text: #e8e8e8;
+  --text-muted: #888888;
+  --danger: #ff4d4d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Neon glow utilities */
+.neon-border {
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 8px var(--neon-glow), inset 0 0 8px rgba(57, 255, 106, 0.05);
+}
+
+.neon-text {
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon-glow);
+}
+
+.neon-glow {
+  box-shadow: 0 0 12px var(--neon-glow), 0 0 24px rgba(57, 255, 106, 0.15);
+}
+
+.neon-btn {
+  background: transparent;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  transition: all 0.2s ease;
+}
+
+.neon-btn:hover:not(:disabled) {
+  background: rgba(57, 255, 106, 0.12);
+  box-shadow: 0 0 16px var(--neon-glow);
+}
+
+.neon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.neon-btn-filled {
+  background: var(--neon);
+  color: #0a0a0a;
+  border: 1px solid var(--neon);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.neon-btn-filled:hover:not(:disabled) {
+  box-shadow: 0 0 20px var(--neon-glow);
+  filter: brightness(1.08);
+}
+
+.neon-btn-filled:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Animations */
+@keyframes pulse-neon {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--neon-glow);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 16px var(--neon-glow);
+  }
+}
+
+@keyframes stage-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-stage {
+  animation: stage-fade 0.35s ease-out;
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 1.6s ease-in-out infinite;
+}
+
+/* Input focus */
+.lurk-input:focus {
+  outline: none;
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 12px var(--neon-glow);
+}
+
+/* Chat message bubbles */
+.msg-user {
+  background: rgba(57, 255, 106, 0.08);
+  border: 1px solid rgba(57, 255, 106, 0.25);
+}
+
+.msg-assistant {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
